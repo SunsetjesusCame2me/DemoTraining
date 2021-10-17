@@ -8,6 +8,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #define SHM_FILE_PATH "../path"
 #define SHM_SIZE 4096
 
