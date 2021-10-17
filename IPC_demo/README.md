@@ -20,3 +20,4 @@
 - 相关函数：
   - shmget(key, size, flag): key值，4k的整数倍大小，文件权限(0664|IPC_CREAT)
   - shmat(shmid, (void*)shmaddr, flag): 创建好的shmid，映射的虚拟地址起始地址(NULL-内核自定一个vp来开始映射)，flag映射条件（0-可读可写；shm_RDONLY-只读；1-只写）
+  - 注意：进程退出删除这个shm，要先把映射关系解除
