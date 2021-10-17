@@ -58,6 +58,8 @@ int main()
             
             sleep(1);
         }
+        // 取消映射
+        shmdt(shmaddr);
     }
     // 父进程：写shm内容
     else 
@@ -80,6 +82,13 @@ int main()
             
             sleep(1);
         }
+        shmdt(shmaddr);
+
+        // 这里等子进程结束
+        wait(NULL);
+        
+        // 走到这一步，保证映射已经全部解除
+        shmctl(shmid, IPC_RMID, NULL);
     }
     
     return 0;
