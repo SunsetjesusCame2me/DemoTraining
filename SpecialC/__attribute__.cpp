@@ -4,7 +4,8 @@
 */
 #include <iostream>
 #include <cstdio>
-#define CASE_1
+// #define CASE_1
+#define CASE_2
 
 // 函数属性
 #ifdef CASE_1
@@ -38,12 +39,20 @@
     }
 #endif
 
-// 变量属性
+// 变量属性: 放在变量前面修饰
 #ifdef CASE_2
+    // aligned: 改变分配内存时的对齐规则
+    struct test1 
+    {
+        char a;
+        char b;
+    } __attribute__((aligned(8))) st1;
     
-
     int main()
     {
+        // 原本应该是2 但是设置了8字节对齐 只能补齐到8
+        std::cout << sizeof(st1) << std::endl;
+
         return 0;
     }
 #endif
